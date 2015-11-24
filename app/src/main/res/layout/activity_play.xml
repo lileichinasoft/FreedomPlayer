@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.gxh.myplayer.PlayActivity">
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textAppearance="?android:attr/textAppearanceLarge"
+              android:text="= Stream Player ="
+              android:id="@+id/textView"
+              android:layout_alignParentTop="true"
+              android:layout_alignParentStart="true"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentEnd="true"
+              android:textIsSelectable="false"
+              android:layout_alignParentBottom="false"
+              android:gravity="center_horizontal"
+        />
+
+
+    <EditText android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/url"
+              android:text="rtsp://ipaddr:port/domain"
+              android:layout_below="@id/textView"
+              android:layout_alignParentTop="false"
+              android:layout_alignParentLeft="true"
+              android:layout_alignRight="@id/textView"
+              android:layout_alignEnd="@id/textView"
+        />
+
+    <RadioGroup android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroup"
+                android:layout_below="@id/url"
+                android:orientation="horizontal"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="false"
+        >
+
+        <RadioButton android:layout_width="wrap_content"
+                     android:layout_height="51dp"
+                     android:id="@+id/radioButtonStream"
+                     android:text="Stream"
+                     android:checked="false"
+            />
+
+        <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+                     android:id="@+id/radioButtonFile"
+                     android:text="File"
+
+            />
+    </RadioGroup>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/start_play"
+            android:text="Paly"
+            android:layout_below="@id/url"
+            android:layout_alignRight="@id/url"
+            android:layout_alignEnd="@id/url"
+            android:layout_toRightOf="@id/radioGroup"
+            android:layout_toEndOf="@id/radioGroup"
+        />
+
+    <com.freedomplayer.android.widget.IjkVideoView android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                         android:id="@+id/rtsp_player"
+                                     android:layout_below="@id/start_play"
+                                     android:layout_alignRight="@id/start_play"
+                                     android:layout_alignEnd="@id/start_play"></com.freedomplayer.android.widget.IjkVideoView>
+
+</RelativeLayout>
