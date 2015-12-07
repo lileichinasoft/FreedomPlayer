@@ -8,7 +8,7 @@ import com.freedomplayer.android.application.Settings;
 
 import java.io.File;
 
-public class FileExploerrActivity extends AppCompatActivity {
+public class FileExplorerActivity extends AppCompatActivity {
 
     private Settings mSetting;
 
