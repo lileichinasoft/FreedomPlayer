@@ -1,4 +1,4 @@
-package com.freedomplayer.android.views;
+package com.freedomplayer.android.activities;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,11 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 
 import com.freedomplayer.R;
 import com.freedomplayer.android.widget.AndroidMediaController;
 import com.freedomplayer.android.widget.IjkVideoView;
+
+import junit.framework.Test;
 
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
@@ -65,8 +68,8 @@ public class PlayActivity extends AppCompatActivity {
 
     private void init(){
 
-        IjkMediaPlayer.loadLibrariesOnce(null);
-        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
+//        IjkMediaPlayer.loadLibrariesOnce(null);
+//        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
 
         rtspUrl = (EditText)this.findViewById(R.id.url);
         playButton = (Button)this.findViewById(R.id.start_play);
@@ -92,12 +95,7 @@ public class PlayActivity extends AppCompatActivity {
     private void playRtspFile(String filePath){
         videoView.setVideoPath(Environment.getExternalStorageDirectory() + "/" + filePath);
         videoView.requestFocus();
-        videoView.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(IMediaPlayer mp) {
-                videoView.start();
-            }
-            });
+        videoView.start();
     }
 
 }
