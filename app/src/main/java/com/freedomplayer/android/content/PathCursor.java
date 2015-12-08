@@ -1,10 +1,13 @@
-package com.freedomplayer.android.content;/**
- * Created by Administrator on 2015/12/7.
- */
+package com.freedomplayer.android.content;
 
 import android.database.AbstractCursor;
+import android.text.TextUtils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * @author GuanXinHua
@@ -17,7 +20,14 @@ import java.io.File;
  */
 public class PathCursor extends AbstractCursor {
 
+    private List<FileItme> mFileList = new ArrayList<>();
+
     PathCursor(File parentDirectory,File[] fileList){
+        if(parentDirectory.getParent()!=null){
+            FileItme parentFile = new FileItme(new File(parentDirectory,".."));
+            parentFile.isDirectory = true;
+        }
+
 
     }
 
@@ -67,6 +77,16 @@ public class PathCursor extends AbstractCursor {
     }
 
 
+
+    private static Set<String> mMediaExtSet = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+
+    {
+        mMediaExtSet.add("flv");
+        mMediaExtSet.add("mp4");
+    }
+
+
+
     private class FileItme{
 
         public File file;
@@ -79,6 +99,18 @@ public class PathCursor extends AbstractCursor {
 
         public FileItme(File file) {
             this.file = file;
+            this.isDirectory = file.isDirectory();
+
+            String fileName = file.getName();
+            if (!TextUtils.isEmpty(fileName)){
+                 int  extPos = fileName.lastIndexOf(".");
+                if (extPos >= 0){
+                    String ext = fileName.substring(extPos+1);
+                    if (!TextUtils.isEmpty(ext) && mMediaExtSet.contains(ext)){
+                        this.isVideo = true;
+                    }
+                }
+            }
         }
     }
 

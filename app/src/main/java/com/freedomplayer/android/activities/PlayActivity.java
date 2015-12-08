@@ -8,16 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 
 import com.freedomplayer.R;
-import com.freedomplayer.android.widget.AndroidMediaController;
-import com.freedomplayer.android.widget.IjkVideoView;
+import com.freedomplayer.android.application.Settings;
+import com.freedomplayer.android.widget.media.IjkVideoView;
 
-import junit.framework.Test;
-
-import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 
@@ -43,6 +39,7 @@ public class PlayActivity extends AppCompatActivity {
     EditText rtspUrl ;
     RadioButton radioStream;
     RadioButton radioFile;
+    Settings mSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +65,10 @@ public class PlayActivity extends AppCompatActivity {
 
     private void init(){
 
-//        IjkMediaPlayer.loadLibrariesOnce(null);
-//        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
+        mSettings = new Settings(this);
+
+        IjkMediaPlayer.loadLibrariesOnce(null);
+        IjkMediaPlayer.native_profileBegin("libijkplayer.so");
 
         rtspUrl = (EditText)this.findViewById(R.id.url);
         playButton = (Button)this.findViewById(R.id.start_play);

@@ -68,11 +68,12 @@
             android:layout_toEndOf="@id/radioGroup"
         />
 
-    <com.freedomplayer.android.widget.IjkVideoView android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:id="@+id/rtsp_player"
-                                     android:layout_below="@id/start_play"
-                                     android:layout_alignRight="@id/start_play"
-                                     android:layout_alignEnd="@id/start_play"></com.freedomplayer.android.widget.IjkVideoView>
+    <com.freedomplayer.android.widget.media.IjkVideoView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rtsp_player"
+        android:layout_below="@id/start_play"
+        android:layout_alignRight="@id/start_play"
+        android:layout_alignEnd="@id/start_play"></com.freedomplayer.android.widget.media.IjkVideoView>
 
 </RelativeLayout>
