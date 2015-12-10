@@ -1,0 +1,2 @@
+# FreedomPlayer
+初学者练习基于ijkPlayer开发的播放器
